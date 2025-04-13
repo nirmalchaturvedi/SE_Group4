@@ -3,30 +3,70 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Products.css';
 
 function Products() {
-    const [products, setProducts] = useState([]);
+    const [bearings, setBearings] = useState([]);
+    const [grease, setGrease] = useState([]);
+    const [blocks, setBlocks] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState('bearings');
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        // Clear any authentication tokens or session data
-        navigate('/signin');
+        navigate('/', { replace: true });
     };
-
+    
     useEffect(() => {
-        const fetchProducts = async () => {
+        const fetchBearings = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/products');
-                const data = await response.json();
-                setProducts(data);
+                const res = await fetch('http://localhost:5000/api/products');
+                const data = await res.json();
+                setBearings(data);
             } catch (err) {
                 console.error(err);
             }
         };
-        fetchProducts();
+
+        const fetchGrease = async () => {
+            try {
+                const res = await fetch('http://localhost:5000/api/grease');
+                const data = await res.json();
+                setGrease(data);
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        const fetchBlocks = async () => {
+            try {
+                const res = await fetch('http://localhost:5000/api/blocks');
+                const data = await res.json();
+                setBlocks(data);
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        fetchBearings();
+        fetchGrease();
+        fetchBlocks();
     }, []);
 
+    const renderProducts = (productsArray) => (
+        <div className="products-grid">
+            {productsArray.map((product) => (
+                <div key={product._id} className={`product-card ${product.offer ? 'offer' : ''}`}>
+                    <img src={product.image} alt={product.name} className="product-image" />
+                    <h3>{product.name}</h3>
+                    <p>Category: {product.category}</p>
+                    <p className="product-price">${product.price}</p>
+                    <p className="product-stock">Stock: {product.stock}</p>
+                    {product.offer && <span className="offer-badge">Special Offer</span>}
+                </div>
+            ))}
+        </div>
+    );
+
     return (
-        <div>
-            <header className="navbar">
+        <div className="products-wrapper">
+            <header className="navbar fixed-navbar">
                 <div className="navbar-brand">Mehta Enterprise</div>
                 <nav>
                     <ul className="navbar-links">
@@ -37,21 +77,37 @@ function Products() {
                     </ul>
                 </nav>
             </header>
+
             <main className="products-page">
                 <h2>Our Products</h2>
-                <p className="products-description">Browse through our wide range of industrial bearings and products.</p>
-                <div className="products-grid">
-                    {products.map((product) => (
-                        <div key={product._id} className={`product-card ${product.offer ? 'offer' : ''}`}>
-                            <img src={product.image} alt={product.name} className="product-image" />
-                            <h3>{product.name}</h3>
-                            <p>Category: {product.category}</p>
-                            <p>Price: ${product.price}</p>
-                            {product.offer && <span className="offer-badge">Special Offer</span>}
-                            <button className="buy-now-button">Buy Now</button>
-                        </div>
-                    ))}
+                <p className="products-description">
+                    Browse our wide range of products across multiple categories.
+                </p>
+
+                <div className="category-buttons">
+                    <button
+                        className={`category-btn ${selectedCategory === 'bearings' ? 'active' : ''}`}
+                        onClick={() => setSelectedCategory('bearings')}
+                    >
+                        Bearings
+                    </button>
+                    <button
+                        className={`category-btn ${selectedCategory === 'grease' ? 'active' : ''}`}
+                        onClick={() => setSelectedCategory('grease')}
+                    >
+                        Grease
+                    </button>
+                    <button
+                        className={`category-btn ${selectedCategory === 'blocks' ? 'active' : ''}`}
+                        onClick={() => setSelectedCategory('blocks')}
+                    >
+                        Blocks
+                    </button>
                 </div>
+
+                {selectedCategory === 'bearings' && renderProducts(bearings)}
+                {selectedCategory === 'grease' && renderProducts(grease)}
+                {selectedCategory === 'blocks' && renderProducts(blocks)}
             </main>
         </div>
     );

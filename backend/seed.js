@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Product = require('./models/Product');
+const Grease = require('./models/Grease');
+const Block = require('./models/Block');
 
 const seedProducts = async () => {
     await mongoose.connect('mongodb://localhost:27017/mehtaEnterprise', {
@@ -13,7 +15,7 @@ const seedProducts = async () => {
             category: 'Bearings',
             price: 10.99,
             stock: 100,
-            image: 'http://localhost:3000/images/bearing1.jpg',
+            image: 'http://localhost:5000/image/bearing1.jpg',
             offer: true,
         },
         {
@@ -153,10 +155,65 @@ const seedProducts = async () => {
         },
     ];
 
-    await Product.deleteMany({});
-    await Product.insertMany(products);
+    const grease = [
+        {
+            name: 'High Temp Grease',
+            category: 'Grease',
+            price: 12.99,
+            stock: 40,
+            image: 'http://localhost:3000/images/grease1.jpg',
+            offer: true,
+        },
+        {
+            name: 'Multipurpose Grease',
+            category: 'Grease',
+            price: 9.99,
+            stock: 60,
+            image: 'http://localhost:3000/images/grease2.jpg',
+        },
+        {
+            name: 'Lithium Grease',
+            category: 'Grease',
+            price: 11.49,
+            stock: 30,
+            image: 'http://localhost:3000/images/grease3.jpg',
+        }
+    ];
 
-    console.log('Database seeded with 20 products!');
+    const blocks = [
+        {
+            name: 'UCP205 Pillow Block',
+            category: 'Blocks',
+            price: 14.99,
+            stock: 25,
+            image: 'http://localhost:3000/images/block1.jpg',
+        },
+        {
+            name: 'UCFL204 Flange Block',
+            category: 'Blocks',
+            price: 16.99,
+            stock: 30,
+            image: 'http://localhost:3000/images/block2.jpg',
+            offer: true,
+        },
+        {
+            name: 'UCF205 Square Block',
+            category: 'Blocks',
+            price: 18.49,
+            stock: 20,
+            image: 'http://localhost:3000/images/block3.jpg',
+        }
+    ];
+
+    await Product.deleteMany({});
+    await Grease.deleteMany({});
+    await Block.deleteMany({});
+
+    await Product.insertMany(products);
+    await Grease.insertMany(grease);
+    await Block.insertMany(blocks);
+
+    console.log('Database seeded with Products, Grease, and Blocks!');
     mongoose.connection.close();
 };
 

@@ -10,7 +10,7 @@ function ContactUs() {
 
     const handleLogout = () => {
         // Clear any authentication tokens or session data
-        navigate('/signin');
+        navigate('/');
     };
 
     const handleSubmit = async (e) => {
