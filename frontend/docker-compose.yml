@@ -1,0 +1,13 @@
+version: '3'
+services:
+  frontend:
+    build: .
+    ports:
+      - "5000:5000"
+  backend:
+    image: node:16-alpine
+    container_name: backend
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "5001:5001"

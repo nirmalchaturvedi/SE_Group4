@@ -1,0 +1,264 @@
+/* ==============================================
+   REVIEWS PAGE STYLES
+   Consistent with Mehta Enterprises Design System
+   ============================================== */
+
+   .reviews-page {
+    padding-top: 90px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Hero Section */
+  .reviews-hero {
+    background: linear-gradient(135deg, var(--color-primary-blue) 0%, var(--color-dark-steel) 100%);
+    color: white;
+    padding: var(--space-xl) 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .reviews-hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-sm);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  
+  .reviews-hero p {
+    max-width: 700px;
+    margin: 0 auto var(--space-md);
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+  
+  .rating-summary {
+    margin-top: var(--space-lg);
+    display: flex;
+    justify-content: center;
+  }
+  
+  .average-rating {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .rating-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    background: linear-gradient(to right, var(--color-premium-gold), #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: var(--space-xs);
+  }
+  
+  .stars {
+    display: flex;
+    margin-bottom: var(--space-xs);
+  }
+  
+  .star-filled {
+    color: var(--color-premium-gold);
+    font-size: 1.5rem;
+    margin: 0 2px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  }
+  
+  .star-empty {
+    color: var(--color-medium-gray);
+    font-size: 1.5rem;
+    margin: 0 2px;
+  }
+  
+  .rating-count {
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+  
+  /* Reviews Grid */
+  .reviews-container {
+    max-width: 1440px;
+    margin: var(--space-xl) auto;
+    padding: 0 5%;
+  }
+  
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+  
+  .review-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-medium);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .review-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-card-hover);
+  }
+  
+  .review-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      var(--color-primary-blue),
+      var(--color-mehta-accent)
+    );
+  }
+  
+  .review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-md);
+  }
+  
+  .reviewer-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-circle);
+    background: var(--color-medium-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--space-sm);
+    color: var(--color-dark-gray);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  
+  .reviewer-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+    color: var(--color-dark-steel);
+  }
+  
+  .company {
+    font-size: 0.9rem;
+    color: var(--color-dark-gray);
+    margin-bottom: var(--space-xs);
+  }
+  
+  .review-rating {
+    display: flex;
+  }
+  
+  .review-content {
+    position: relative;
+    padding-left: var(--space-md);
+    margin-bottom: var(--space-md);
+  }
+  
+  .quote-icon {
+    position: absolute;
+    top: -10px;
+    left: -5px;
+    font-size: 3rem;
+    color: rgba(0, 102, 204, 0.1);
+    z-index: 0;
+  }
+  
+  .review-content p {
+    position: relative;
+    z-index: 1;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--color-dark-gray);
+  }
+  
+  .review-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .review-date {
+    font-size: 0.9rem;
+    color: var(--color-dark-gray);
+    opacity: 0.7;
+  }
+  
+  /* Add Review Section */
+  .add-review {
+    max-width: 800px;
+    margin: var(--space-xl) auto;
+    padding: var(--space-xl);
+    text-align: center;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+  
+  .add-review h2 {
+    font-size: 2rem;
+    margin-bottom: var(--space-sm);
+    color: var(--color-dark-steel);
+  }
+  
+  .add-review p {
+    margin-bottom: var(--space-lg);
+    color: var(--color-dark-gray);
+  }
+  
+  .review-cta {
+    background: linear-gradient(
+      135deg, 
+      var(--color-primary-blue) 0%, 
+      var(--color-mehta-accent) 100%
+    );
+    color: white;
+    border: none;
+    padding: var(--space-sm) var(--space-xl);
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition-medium);
+    box-shadow: var(--shadow-button);
+  }
+  
+  .review-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px -5px rgba(0, 102, 204, 0.4);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .reviews-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .add-review {
+      padding: var(--space-lg);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .review-card {
+      padding: var(--space-md);
+    }
+    
+    .reviewer-avatar {
+      width: 50px;
+      height: 50px;
+      font-size: 1.2rem;
+    }
+  }

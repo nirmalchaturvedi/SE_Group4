@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Products.css';
+import Navbar from './Navbar'; // Import your existing Navbar component
+import './Navbar.css'; // Ensure correct path to your CSS file
 
 function Products() {
     const [bearings, setBearings] = useState([]);
@@ -56,7 +58,7 @@ function Products() {
                     <img src={product.image} alt={product.name} className="product-image" />
                     <h3>{product.name}</h3>
                     <p>Category: {product.category}</p>
-                    <p className="product-price">${product.price}</p>
+                    <p className="product-price">₹{product.price.toLocaleString('en-IN')}</p>
                     <p className="product-stock">Stock: {product.stock}</p>
                     {product.offer && <span className="offer-badge">Special Offer</span>}
                 </div>
@@ -66,6 +68,7 @@ function Products() {
 
     return (
         <div className="products-wrapper">
+             <Navbar></Navbar>
             <header className="navbar fixed-navbar">
                 <div className="navbar-brand">Mehta Enterprise</div>
                 <nav>

@@ -1,0 +1,191 @@
+/* Main Admin Container */
+.admin-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background-color: #ffffff;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.admin-container:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Dashboard Header */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 1rem;
+}
+
+.dashboard-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Logout Button */
+.logout-button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 12px 18px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logout-button:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+
+/* Product Cards */
+.product-card {
+    border: 1px solid #ddd;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.product-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.product-card h4 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.product-card p {
+    color: #777;
+    margin: 4px 0;
+}
+
+.product-card input,
+.product-card textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    outline-color: #1976d2;
+    transition: border-color 0.3s ease;
+    width: 100%;
+}
+
+.product-card input:focus,
+.product-card textarea:focus {
+    border-color: #1976d2;
+    box-shadow: 0 0 5px rgba(25, 118, 210, 0.5);
+}
+
+.product-card button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    background-color: #1976d2;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-card button:hover {
+    background-color: #125ca1;
+    transform: scale(1.05);
+}
+
+/* Update & Delete Section */
+.update-delete-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.update-delete-section h3 {
+    font-size: 20px;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.update-delete-section label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #666;
+}
+
+.update-delete-section select,
+.update-delete-section input {
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    margin-bottom: 1.2rem;
+    transition: border-color 0.3s ease;
+}
+
+.update-delete-section select:focus,
+.update-delete-section input:focus {
+    border-color: #1976d2;
+}
+
+.update-delete-section button {
+    padding: 12px 24px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.update-delete-section button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* Enquiry List */
+.enquiry-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 3rem;
+}
+
+.enquiry-card {
+    background-color: #f5f5f5;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 6px solid #007bff;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.enquiry-card p {
+    color: #333;
+}
+
+.enquiry-card strong {
+    color: #007bff;
+}

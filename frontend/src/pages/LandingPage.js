@@ -1,84 +1,148 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaCog, FaShieldAlt, FaTruck, FaChartLine, FaIndustry } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import './LandingPage.css';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock } from 'react-icons/fa';
+import Navbar from './Navbar'; // Import your existing Navbar component
+import './Navbar.css'; // Ensure correct path to your CSS file
 
-function LandingPage() {
+function Home() {
+    const navigate = useNavigate();
+
+    const handleAdminLogin = () => {
+        navigate('/admin-login');
+    };
+
+    const goToProducts = () => {
+        navigate('/products');
+    };
+
+    const productCategories = [
+        {
+            name: 'Bearings',
+            image: '/image/Bearing.jpeg',
+            route: 'http://localhost:3000/products'
+        },
+        {
+            name: 'Grease',
+            image: '/image/Grease.jpg',
+            route: 'http://localhost:3000/products'
+        },
+        {
+            name: 'Blocks',
+            image: '/image/Blocks.jpeg',
+            route: 'http://localhost:3000/products'
+        }
+    ];
+
+    const handleProductClick = (url) => {
+        window.open(url, '_blank');
+    };
+
     return (
-        <div className="landing-page">
-            {/* Hero Section */}
-            <section className="landing-hero">
-                <h1 className="landing-title">Welcome to Mehta Enterprise</h1>
-                <p className="landing-description">
-                    Your trusted partner for <span className="landing-highlight">industrial bearings</span> and 
-                    <span className="landing-highlight"> mechanical products</span> since 1985.
-                </p>
-                <div className="landing-buttons">
-                    <Link to="/signin">
-                        <button className="landing-button">Sign In</button>
-                    </Link>
-                    <Link to="/signup">
-                        <button className="landing-button secondary">Register</button>
-                    </Link>
-                </div>
-            </section>
+        <div className="home-wrapper">
+            <Navbar onAdminLogin={handleAdminLogin} />
 
-            {/* Features Section */}
-            <section className="landing-features">
-                <div className="feature-card">
-                    <div className="feature-icon"><FaIndustry /></div>
-                    <h3 className="feature-title">Premium Quality</h3>
-                    <p className="feature-description">
-                        ISO-certified bearings with industry-leading durability and performance standards.
-                    </p>
+            <main className="home-content">
+                <div className="hero-section">
+                    <h2>Welcome to <span>Mehta Enterprises</span></h2>
+                    <p>Precision-engineered bearings for industrial excellence since 1985.</p>
+                    
+                    <div className="logo-container">
+                        <img 
+                            src="/image/BEARINGlogo.jpg" 
+                            alt="Mehta Enterprises Logo" 
+                            className="company-logo"
+                        />
+                        <button className="cta-button" onClick={goToProducts}>
+                            Discover Our Products
+                        </button>
+                    </div>
                 </div>
-                <div className="feature-card">
-                    <div className="feature-icon"><FaTruck /></div>
-                    <h3 className="feature-title">Fast Delivery</h3>
-                    <p className="feature-description">
-                        Nationwide distribution network ensuring timely delivery to your doorstep.
-                    </p>
-                </div>
-                <div className="feature-card">
-                    <div className="feature-icon"><FaShieldAlt /></div>
-                    <h3 className="feature-title">Trusted Supplier</h3>
-                    <p className="feature-description">
-                        35+ years of experience serving major industries across India.
-                    </p>
-                </div>
-            </section>
 
-            {/* Testimonials Section */}
-            <section className="testimonials">
-                <h2 className="section-title">What Our Clients Say</h2>
-                <div className="testimonial-cards">
-                    <div className="testimonial-card">
-                        <p>"Mehta Enterprise has been our reliable bearing supplier for over a decade."</p>
-                        <div className="client-info">
-                            <span className="client-name">- Rajesh Sharma</span>
-                            <span className="client-company">ABC Manufacturing</span>
+                <div className="company-showcase">
+                    <div className="showcase-block">
+                        <img 
+                            src="/image/image1.png" 
+                            alt="Mehta Enterprises Factory" 
+                            className="showcase-image"
+                        />
+                        <div className="showcase-caption">
+                            <h3>Our Manufacturing Facility</h3>
+                            <p>State-of-the-art production with quality control at every stage</p>
                         </div>
                     </div>
-                    <div className="testimonial-card">
-                        <p>"Excellent product quality and exceptional customer service."</p>
-                        <div className="client-info">
-                            <span className="client-name">- Priya Patel</span>
-                            <span className="client-company">XYZ Industries</span>
+                    <div className="showcase-block">
+                        <img 
+                            src="/image/image1.png" 
+                            alt="Mehta Enterprises Team" 
+                            className="showcase-image"
+                        />
+                        <div className="showcase-caption">
+                            <h3>Expert Engineering Team</h3>
+                            <p>Over 100 years of combined bearing expertise</p>
                         </div>
                     </div>
                 </div>
-            </section>
 
-            {/* Call to Action */}
-            <section className="cta-section">
-                <h2>Ready to Experience the Mehta Enterprise Difference?</h2>
-                <p>Join hundreds of satisfied industrial customers today</p>
-                <Link to="/signup">
-                    <button className="cta-button">Get Started Now</button>
-                </Link>
-            </section>
+                <section className="featured-products">
+                    <h3>Our Product Categories</h3>
+                    <div className="products-grid">
+                        {productCategories.map((item, index) => (
+                            <div
+                                key={index}
+                                className="product-card"
+                                onClick={() => handleProductClick(item.route)}
+                                style={{ cursor: 'pointer' }}
+                            >
+                                <img src={item.image} alt={item.name} className="product-image" />
+                                <h4>{item.name}</h4>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                <div className="address-box">
+                    <h3>Visit Us</h3>
+                    <div className="address-content">
+                        <div className="address-item">
+                            <FaMapMarkerAlt className="address-icon" />
+                            <p>
+                                Shop No 2 & 4, Annasaheb, Shiv Apartments<br />
+                                Magar Stadium Rd, Yashwantnagar<br />
+                                Pimpri Colony, Pune, Pimpri-Chinchwad,<br />
+                                Maharashtra 411018
+                            </p>
+                        </div>
+                        <div className="address-item">
+                            <FaPhone className="address-icon" />
+                            <p>+91 20 2765 4321</p>
+                        </div>
+                        <div className="address-item">
+                            <FaEnvelope className="address-icon" />
+                            <p>sales@mehtaenterprises.com</p>
+                        </div>
+                        <div className="address-item">
+                            <FaClock className="address-icon" />
+                            <p>Mon-Fri: 9AM - 6PM<br />Sat: 9AM - 1PM</p>
+                        </div>
+                    </div>
+
+                    <div className="address-map">
+                        <iframe
+                            src="https://www.google.com/maps?q=18.63939927194217,73.82206602157333&z=16&output=embed"
+                            width="100%"
+                            height="400"
+                            style={{ border: 0 }}
+                            allowFullScreen=""
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title="Mehta Enterprises Location"
+                        />
+                    </div>
+                </div>
+            </main>
         </div>
     );
 }
 
-export default LandingPage;
+export default Home;

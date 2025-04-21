@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './ContactUs.css';
+import Navbar from './Navbar'; // Import your existing Navbar component
+import './Navbar.css'; // Ensure correct path to your CSS file
 
 function ContactUs() {
     const [name, setName] = useState('');
@@ -32,22 +34,17 @@ function ContactUs() {
             }
         } catch (err) {
             console.error(err);
+            alert('Something went wrong. Please try again later.');
         }
+    };
+
+    const goBackToHome = () => {
+        navigate('/home');  // Navigate to the home page
     };
 
     return (
         <div>
-            <header className="navbar">
-                <div className="navbar-brand">Mehta Enterprise</div>
-                <nav>
-                    <ul className="navbar-links">
-                        <li><Link to="/home">Home</Link></li>
-                        <li><Link to="/products">Products</Link></li>
-                        <li><Link to="/contact">Contact Us</Link></li>
-                        <li><button className="logout-button" onClick={handleLogout}>Logout</button></li>
-                    </ul>
-                </nav>
-            </header>
+            <Navbar></Navbar>
             <main className="contact-page">
                 <h2>Contact Us</h2>
                 <p className="contact-description">We'd love to hear from you! Please fill out the form below.</p>
@@ -74,6 +71,10 @@ function ContactUs() {
                     />
                     <button type="submit" className="submit-button">Send</button>
                 </form>
+                {/* Go back button */}
+                <button onClick={goBackToHome} className="go-back-button">
+                    Go Back to Home
+                </button>
             </main>
         </div>
     );
