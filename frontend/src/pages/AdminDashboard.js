@@ -227,7 +227,7 @@ function AdminDashboard() {
                                 }}
                             >
                                 <h4>{product.name}</h4>
-                                <p>Price: ${product.price}</p>
+                                <p>Price: ₹{product.price}</p>
                                 <p>Stock: {product.stock}</p>
                                 <p>Category: {product.category}</p>
                                 <p>Offer: {product.offer ? 'Yes' : 'No'}</p>

@@ -40,7 +40,7 @@ function Home() {
 
     return (
         <div className="home-wrapper">
-            <Navbar onAdminLogin={handleAdminLogin} />
+            <Navbar></Navbar>
 
             <main className="home-content">
                 <div className="hero-section">

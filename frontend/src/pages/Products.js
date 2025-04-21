@@ -69,18 +69,6 @@ function Products() {
     return (
         <div className="products-wrapper">
              <Navbar></Navbar>
-            <header className="navbar fixed-navbar">
-                <div className="navbar-brand">Mehta Enterprise</div>
-                <nav>
-                    <ul className="navbar-links">
-                        <li><Link to="/home">Home</Link></li>
-                        <li><Link to="/products">Products</Link></li>
-                        <li><Link to="/contact">Contact Us</Link></li>
-                        <li><button className="logout-button" onClick={handleLogout}>Logout</button></li>
-                    </ul>
-                </nav>
-            </header>
-
             <main className="products-page">
                 <h2>Our Products</h2>
                 <p className="products-description">
