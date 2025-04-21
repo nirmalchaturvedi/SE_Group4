@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
  // Optional: for auth context
 import './AdminLogin.css';
+import Navbar from './Navbar';
 
 function AdminLogin() {
     const [username, setUsername] = useState('');
@@ -80,6 +81,7 @@ function AdminLogin() {
 
     return (
         <div className="admin-login-container">
+            <Navbar></Navbar>
             <div className="admin-login-card">
                 <div className="login-header">
                     <h1 className="admin-login-title">Admin Portal</h1>
